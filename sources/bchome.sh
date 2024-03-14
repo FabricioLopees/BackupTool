@@ -2,28 +2,28 @@
 username=$(echo $USER)
 
 # Define o caminho da pasta home
-homedir="/home/$username/*"
+homedir="/home/$username/"
 
 # cria uma pasta para trabalho temporária
-mkdir copydir
+mkdir -v copydir
 
-# copia a pasta home para dentro da pasta de trabalho temporária
-cp -r $homedir copydir/
+# copia a pasta home para dentro da pasta de trabalho temporária exceto a pasta backup-tool/
+find $homedir -mindepth 1 -maxdepth 1 -type d ! -name "backup-tool" -exec cp -rv {} copydir/ \;
 
 # acessa a pasta
-cd copydir
+cd -v copydir
 
 # cria um tar.xz de todos os arquivos copiados
-tar -cJf $username-home-backup.tar.xz ./*
+tar -cJvf $username-home-backup.tar.xz ./*
 
 # move o tar.xz para um diretório acima
-mv $username-home-backup.tar.xz ../
+mv -v $username-home-backup.tar.xz ../
 
 # sai da pasta temporária
-cd ..
+cd -v ..
 
 # exclui a pasta temporária
-sudo rm -r copydir
+sudo rm -rv copydir
 
 # executa o script de versionamento
 . .sources/versioning.sh
