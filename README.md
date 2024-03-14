@@ -8,7 +8,7 @@ Um simples conjunto de scripts que realiza o backup da pasta home
 
 ### Como usar
 1. ##### Configurando o dispositivo que será salvo o backup
-    - Execute o script `init.sh`.
+    - Execute o script `start.sh`.
         - Ele criará em sua `/home` a pasta `backup-tool`
         - Este diretório será onde o script trabalhará
     - Acesse o diretório `~/backup-tool`
