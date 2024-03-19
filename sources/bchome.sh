@@ -1,7 +1,12 @@
 #!/bin/bash
 
-# Acessa o nome do usuário
-username=$(echo $USER)
+# Verifica se o usuário está executando em modo 'sudo' e então salva o nome do usuário
+if [ -n "$SUDO_USER" ]; then
+	username=$SUDO_USER
+else
+	username=$(id -un)
+fi
+
 
 # Define o caminho da pasta home
 homedir="/home/$username/"
