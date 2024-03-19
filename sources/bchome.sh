@@ -18,7 +18,7 @@ mkdir -v copydir
 find $homedir -mindepth 1 -maxdepth 1 -type d ! -name "Backup-Tool" -exec cp -rv {} copydir/ \;
 
 # acessa a pasta
-cd -v copydir
+cd copydir
 
 # cria um tar.xz de todos os arquivos copiados
 tar -cJvf $username-home-backup.tar.xz ./*
@@ -27,7 +27,7 @@ tar -cJvf $username-home-backup.tar.xz ./*
 mv -v $username-home-backup.tar.xz ../
 
 # sai da pasta temporária
-cd -v ..
+cd ..
 
 # exclui a pasta temporária
 sudo rm -rv copydir
