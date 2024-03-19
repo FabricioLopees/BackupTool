@@ -1,6 +1,6 @@
-mkdir -v ~/backup-tool
-cp -rv sources ~/backup-tool
-mv -v ~/backup-tool/sources ~/backup-tool/.sources
-mv -v ~/backup-tool/.sources/bchome.sh ~/backup-tool/
-mv -v ~/backup-tool/.sources/gitignore ~/backup-tool/
-mv -v ~/backup-tool/gitignore ~/backup-tool/.gitignore
+mkdir -v ~/Backup-Tool
+cp -rv sources ~/Backup-Tool
+mv -v ~/Backup-Tool/sources ~/Backup-Tool/.sources
+mv -v ~/Backup-Tool/.sources/bchome.sh ~/Backup-Tool/
+mv -v ~/Backup-Tool/.sources/gitignore ~/Backup-Tool/
+mv -v ~/Backup-Tool/gitignore ~/Backup-Tool/.gitignore
