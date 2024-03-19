@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Acessa o nome do usuário
 username=$(echo $USER)
 

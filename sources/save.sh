@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # coloque entre os parenteses o dispositivo onde será feito o backup
 # exemplo: /dev/sdc3
 

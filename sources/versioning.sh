@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # verifica se a pasta .git não existe
 if [ ! -d ".git" ]; then
     git init
