@@ -14,8 +14,8 @@ homedir="/home/$username/"
 # cria uma pasta para trabalho temporária
 mkdir -v copydir
 
-# copia a pasta home para dentro da pasta de trabalho temporária exceto a pasta backup-tool/
-find $homedir -mindepth 1 -maxdepth 1 -type d ! -name "backup-tool" -exec cp -rv {} copydir/ \;
+# copia a pasta home para dentro da pasta de trabalho temporária exceto a pasta Backup-Tool/
+find $homedir -mindepth 1 -maxdepth 1 -type d ! -name "Backup-Tool" -exec cp -rv {} copydir/ \;
 
 # acessa a pasta
 cd -v copydir
