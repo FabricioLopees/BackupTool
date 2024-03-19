@@ -7,9 +7,8 @@ else
 	username=$(id -un)
 fi
 
-
 # Define o caminho da pasta home
-homedir="/home/$username/"
+homedir="/home/$username"
 
 # cria uma pasta para trabalho temporária
 mkdir -v copydir

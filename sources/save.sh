@@ -10,8 +10,13 @@ backup_device=""
 # captura o UUID do dispositivo
 uuid=$(lsblk -o UUID $backup_device | grep -v UUID);
 
-# salva o nome do usuário
-username=$(echo $USER)
+# Verifica se o usuário está executando em modo 'sudo' e então salva o nome do usuário
+if [ -n "$SUDO_USER" ]; then
+	username=$SUDO_USER
+else
+	username=$(id -un)
+fi
+
 # salva o nome do pc
 machine=$(uname -n)
 
