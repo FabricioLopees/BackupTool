@@ -1,0 +1,15 @@
+@media screen and  (max-width: 610px){
+    .header{
+        height: 600px;
+    }
+    .header .app-image{
+        flex-direction: column;
+    }
+    .app-image h1{
+        text-align: center;
+        
+    }
+    .more-information .cards{
+        flex-direction: column;
+    }
+}
