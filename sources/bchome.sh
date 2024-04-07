@@ -10,26 +10,32 @@ fi
 # Define o caminho da pasta home
 homedir="/home/$username"
 
-# cria uma pasta para trabalho temporária
-mkdir -v copydir
+echo "Criando pasta temporária para trabalho..."
+mkdir copydir/
 
+
+echo "Fazendo backup do diretório $homedir..."
 # copia a pasta home para dentro da pasta de trabalho temporária exceto a pasta Backup-Tool/
-find $homedir -mindepth 1 -maxdepth 1 -type d ! -name "Backup-Tool" -exec cp -rv {} copydir/ \;
+ls $homedir | grep -v Backup-Tool | xargs -I{} cp -r ../{} copydir 
+echo "Cópia finalizada!"
 
 # acessa a pasta
 cd copydir
 
-# cria um tar.xz de todos os arquivos copiados
-tar -cJvf $username-home-backup.tar.xz ./*
+echo "Empacotando e comprimindo arquivos copiados..."
+# cria um tar.gzip de todos os arquivos copiados
+tar -czf $username-home-backup.tar.gzip ./*
 
-# move o tar.xz para um diretório acima
-mv -v $username-home-backup.tar.xz ../
+# move o tar.gzip para um diretório acima
+mv $username-home-backup.tar.gzip ../
+echo "Empacotamento e compressão finalizado!"
 
 # sai da pasta temporária
 cd ..
 
+echo "Excluindo pasta temporária..."
 # exclui a pasta temporária
-sudo rm -rv copydir
+rm -rf copydir
 
 # executa o script de versionamento
 . .sources/versioning.sh
