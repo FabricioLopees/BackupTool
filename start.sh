@@ -1,6 +1,8 @@
-mkdir -v ~/Backup-Tool
-cp -rv sources ~/Backup-Tool
-mv -v ~/Backup-Tool/sources ~/Backup-Tool/.sources
-mv -v ~/Backup-Tool/.sources/bchome.sh ~/Backup-Tool/
-mv -v ~/Backup-Tool/.sources/gitignore ~/Backup-Tool/
-mv -v ~/Backup-Tool/gitignore ~/Backup-Tool/.gitignore
+mkdir ~/Backup-Tool
+cp -r sources ~/Backup-Tool
+mv ~/Backup-Tool/sources ~/Backup-Tool/.sources
+mv ~/Backup-Tool/.sources/bchome.sh ~/Backup-Tool/
+mv ~/Backup-Tool/.sources/gitignore ~/Backup-Tool/
+mv ~/Backup-Tool/gitignore ~/Backup-Tool/.gitignore
+
+echo "Diretório Backup-Tool inicializado!"
