@@ -3,30 +3,23 @@
 # define o dispositivo para salvar o backup
 backup_device=$(cat ~/.backup/backup-device.txt)
 
-backup_device=""
-
-# ======================================
-
-# captura o UUID do dispositivo
-uuid=$(lsblk -o UUID $backup_device | grep -v UUID);
-
-# Verifica se o usuário está executando em modo 'sudo' e então salva o nome do usuário
-if [ -n "$SUDO_USER" ]; then
-	username=$SUDO_USER
+if [ ! "$backup_device" ]; then
+    echo "ERROR!"
+    echo "Backup device not defined!"
 else
-	username=$(id -un)
-fi
+    # captura o UUID do dispositivo
+    uuid=$(lsblk -o UUID $backup_device | grep -v UUID);
 
-# salva o nome do pc
-machine=$(uname -n)
+    # salva o nome do pc
+    machine=$(uname -n)
 
-# monta o dispositivo
-udisksctl mount -b $backup_device > /dev/null
-echo "Montando dispositivo $backup_device..."
-echo "Salvando backup no dispositivo $backup_device..."
+    # monta o dispositivo
+    udisksctl mount -b $backup_device > /dev/null
+    echo "Montando dispositivo $backup_device..."
+    echo "Salvando backup no dispositivo $backup_device..."
 
-# define o caminho do dispositivo montado
-backup_device_path="/run/media/$username/$uuid/"
+    # define o caminho do dispositivo montado
+    backup_device_path="/run/media/$username/$uuid"
 
 # verifica se não esxiste os diretórios de backup no dispositivo
 if [ ! -d "$backup_device_path/backup" ]; then
@@ -51,8 +44,8 @@ if [ -f "$backup_path/$username-home-backup.tar.gzip" ]; then
         rm -rf $backup_path/.old_backup/.git/
     fi
 
-    mv $backup_path/.git $backup_path/.old_backup/
-fi
+    # copia para dentro do dispositvo o arquivo de backup
+    cp ~/.backup/$username-$bctype-backup.tar.gzip $backup_path/
 
 # copia para dentro do dispositvo o arquivo de backup
 cp -r $username-home-backup.tar.gzip $backup_path/
@@ -63,4 +56,5 @@ cp -r .git/ $backup_path
 udisksctl unmount -b $backup_device > /dev/null
 echo "Desmontando dispositivo..."
 
-echo "BACKUP REALIZADO COM SUCESSO!"
+    # echo "BACKUP REALIZADO COM SUCESSO!"
+fi
