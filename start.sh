@@ -1,8 +1,13 @@
-mkdir ~/Backup-Tool
-cp -r sources ~/Backup-Tool
-mv ~/Backup-Tool/sources ~/Backup-Tool/.sources
-mv ~/Backup-Tool/.sources/bchome.sh ~/Backup-Tool/
-mv ~/Backup-Tool/.sources/gitignore ~/Backup-Tool/
-mv ~/Backup-Tool/gitignore ~/Backup-Tool/.gitignore
+# incia o diretorio para trabalho
+mkdir ~/.backup
 
-echo "Diretório Backup-Tool inicializado!"
+# copia os arquivos e scripts para este diretório
+cp -r sources/* ~/.backup
+
+# copia o script de backup para dentro de um diretório executável
+mv ~/.backup/bkp.sh ~/.backup/bkp
+cp ~/.backup/bkp ~/.local/bin/
+
+source ~/.bashrc
+
+echo "Diretório .backup inicializado!"
