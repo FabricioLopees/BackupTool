@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# coloque entre os parenteses o dispositivo onde será feito o backup
-# exemplo: /dev/sdc3
+# define o dispositivo para salvar o backup
+backup_device=$(cat ~/.backup/backup-device.txt)
 
 backup_device=""
 
