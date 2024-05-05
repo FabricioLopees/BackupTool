@@ -56,7 +56,7 @@ if [ "$1" == "--home" ] || [ "$1" == "--root" ]; then
 	. ~/.backup/save.sh $bctype
 else
 	echo "ERROR!"
-	echo "Syntax: bchome [OPTION]"
+	echo "Syntax: bkp [OPTION]"
 	echo "Options:"
 	echo "	--home : do copy of the /home"
 	echo "	--root : do copy of the /"
